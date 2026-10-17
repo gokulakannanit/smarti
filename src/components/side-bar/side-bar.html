@@ -1,0 +1,58 @@
+<!-- Put this inside your <head> tag -->
+<!-- 1. Link your CSS file relative to where side-bar.html lives -->
+<link rel="stylesheet" href="src/side-bar/side-bar.css">
+
+
+<!-- Hamburger Menu Toggle Button using Google Icons -->
+<button class="menu-toggle" aria-label="Toggle Menu">
+    <!-- Menu Icon (shown by default) -->
+    <span class="material-icons icon-menu">menu</span>
+</button>
+
+<!-- The semi-transparent backdrop overlay -->
+<div class="sidebar-overlay"></div>
+
+<!-- Full Screen Navigation Container -->
+<aside class="mobile-sidebar">
+
+    <div class="sidebar-avatar-container">
+        <!-- Avatar Image / Icon Ring -->
+        <div class="avatar-wrapper">
+            <!-- Option A: If you don't have an image, use this Material Icon -->
+            <span class="material-icons material-symbols-outlined avatar-icon-placeholder">account_circle</span>
+
+            <!-- Option B: When you have a real image, uncomment the line below -->
+            <!-- <img src="user-profile.jpg" alt="User Avatar" class="avatar-img" /> -->
+        </div>
+
+        <!-- User Text Information -->
+        <div class="user-info">
+            <h3 class="user-name">Janhavi Rajesh</h3>
+            <p class="user-role">Smart Home Admin</p>
+        </div>
+
+        <!-- Action Button (e.g., Switch Account or View Profile) -->
+        <button class="profile-action-btn" aria-label="Account options">
+            <span class="material-icons material-symbols-outlined">unfold_more</span>
+        </button>
+    </div>
+
+
+
+    <h2>Main</h2>
+    <nav class="full-screen-nav">
+        <a href="/home"><!-- Home Icon -->
+            <span class="material-icons material-symbols-outlined">home</span>Dashboard</a>
+        <a href="/portfolio">
+            <span class="material-icons material-symbols-outlined">favorite</span>
+            Favourites</a>
+        <a href="/portfolio"><span class="material-icons material-symbols-outlined">analytics</span>Analytics</a>
+        <a href="/contact"><span class="material-icons material-symbols-outlined">contact_page</span>Contact</a>
+    </nav>
+    <h2>Account</h2>
+    <nav class="full-screen-nav">
+        <a href="#home"><!-- Setting Icon -->
+            <span class="material-icons material-symbols-outlined">settings</span>Settings</a>
+        <a href="#services"><span class="material-icons material-symbols-outlined">notifications</span>Notifications</a>
+    </nav>
+</aside>

@@ -1,0 +1,104 @@
+.paper-card {
+  width: 160px;
+  padding: 16px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  font-family: 'Inter', sans-serif;
+  
+  /* Modern clean paper outset drop shadow */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #f2f2f7;
+  
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Standard spacing gap between the icon row and text row */
+}
+
+
+/* Ensure the custom font-family is explicitly mapped to the selector */
+.material-icons, .material-symbols-outlined {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 32px;
+    /* Adjust size as needed */
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-smoothing: antialiased;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+
+/* Aligning the top icons to opposite corners */
+.card-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.icon-left {
+  color: #007bff; /* Primary theme color for primary visual asset */
+  font-size: 24px;
+}
+
+.icon-right {
+  color: #8e8e93; /* Neutral tone for administrative/extra options */
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Formatting the text stack */
+.card-bottom-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.text-line-main {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1c1c1e;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.text-line-sub {
+  font-size: 12px;
+  font-weight: 400;
+  color: #8e8e93;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+/* Base Icon setup */
+.power-icon {
+  font-size: 24px;
+  cursor: pointer;
+  transition: color 0.2s ease, font-variation-settings 0.2s ease;
+}
+
+/* State A: When the power is turned OFF */
+.power-icon.off {
+  color: #8e8e93; /* Neutral grey */
+  font-variation-settings: 'FILL' 0, 'wght' 400;
+}
+
+/* State B: When the power is turned ON */
+.power-icon.on {
+  color: #34c759; /* Active green (or use your smarti brand blue #007bff) */
+  font-variation-settings: 'FILL' 1, 'wght' 600; /* Bolds and fills the icon shape */
+}

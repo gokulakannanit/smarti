@@ -1,0 +1,22 @@
+<!-- 1. Link your CSS file relative to where select-list.html lives -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&" />
+
+<link rel="stylesheet" href="src/select-list/select-list.css">
+
+
+<!-- Wrapper switch rule. Use class="smarti-list-container mode-static" OR "smarti-list-container mode-select" -->
+<div class="smarti-list-container mode-static" id="myListComponent">
+<!-- <div class="smarti-list-container mode-select" id="myListComponent"> -->
+  
+  <!-- The Select Trigger Button (Automatically hidden via CSS when in static mode) -->
+  <button class="select-trigger" id="selectTriggerBtn">
+    <span class="material-symbols-outlined trigger-icon">bolt</span>
+    <span class="trigger-label">Select Option</span>
+    <span class="material-symbols-outlined trigger-arrow">arrow_drop_down</span>
+  </button>
+
+  <!-- The Core Component List Structure -->
+  <ul class="settings-list">
+    {{_REPLACE_LOOP_}}
+  </ul>
+</div>

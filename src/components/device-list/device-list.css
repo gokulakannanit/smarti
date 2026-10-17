@@ -1,0 +1,9 @@
+
+/* Master Grid Layout Setup */
+.dashboard-grid {
+  display: flex;
+  flex-wrap: wrap;          /* Allows cards to wrap into lines cleanly */
+  gap: 16px;                /* Perfect uniform space separating the panels */
+  padding: 16px;
+  justify-content: center;  /* Centers your console content on wider screens */
+}

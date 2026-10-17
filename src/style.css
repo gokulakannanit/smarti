@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+/* --- Brand Color Variables --- */
+:root {
+    --brand-green: #59a645;
+    /* Your core 'Smart' color */
+    --brand-blue: #0066cc;
+    /* Your core 'iEB' color */
+    --bg-light: #efefef;
+    /* Light canvas background */
+    --text-dark: #1a1d20;
+    /* Premium body text color */
+    --surface-white: #ffffff;
+    --primary-color: #007bff;   /* Brand color for active state */
+  --inactive-color: #8e8e93;  /* Color for inactive tabs */
+  --nav-bg: #ffffff;          /* Navigation background */
+}
+
+/* --- Common Base Font Styles --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: var(--bg-light);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- Typography Hierarchy --- */
+h1,
+h2,
+h3,
+h4 {
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+p {
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+    color: #505860;
+    /* Soft contrast for body descriptions */
+}
+
+/* --- Utility Brand Styles --- */
+.brand-text-smart {
+    color: var(--brand-green);
+    font-weight: 700;
+}
+
+.brand-text-ieb {
+    color: var(--brand-blue);
+    font-style: italic;
+    font-weight: 500;
+}
+
+.tagline {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--brand-green);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}

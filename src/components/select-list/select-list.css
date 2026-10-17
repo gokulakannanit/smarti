@@ -1,0 +1,132 @@
+/* ==========================================================================
+   1. CORE BASE COMPONENT STYLES (Shared across both variations)
+   ========================================================================== */
+.smarti-list-container {
+  font-family: 'Inter', sans-serif;
+  position: relative;
+}
+
+.settings-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background-color: #ffffff;
+  border: 1px solid #f2f2f7;
+  overflow: hidden;
+}
+
+.list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  border-bottom: 1px solid #f2f2f7;
+  transition: background-color 0.2s ease;
+}
+
+.list-item:last-child { border-bottom: none; }
+.list-item:hover { background-color: #f8f8fa; }
+.list-item:active { background-color: #f2f2f7; }
+
+.item-left-block { display: flex; align-items: center; min-width: 0; }
+.item-text-stack { display: flex; flex-direction: column; min-width: 0; }
+.text-title { font-weight: 600; color: #1c1c1e; }
+.item-icon { flex-shrink: 0; }
+.icon-blue { color: #007bff; }
+.icon-green { color: #34c759; }
+
+/* ==========================================================================
+   2. VARIANT A: STATIC SPREAD VERTICAL LIST OVERRIDES (.mode-static)
+   ========================================================================== */
+.mode-static .select-trigger {
+  display: none; /* Completely hides the wrapper dropdown button */
+}
+
+.mode-static .settings-list {
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+}
+
+.mode-static .list-item {
+  padding: 16px;
+}
+
+.mode-static .item-left-block { gap: 16px; }
+.mode-static .text-title { font-size: 15px; }
+.mode-static .item-icon { font-size: 24px; }
+
+.mode-static .text-subtitle {
+  font-size: 12px;
+  color: #8e8e93;
+}
+
+.mode-static .action-indicator {
+  color: #c7c7cc;
+  font-size: 20px;
+}
+
+/* ==========================================================================
+   3. VARIANT B: DROPDOWN MENU CONFIGURATION OVERRIDES (.mode-select)
+   ========================================================================== */
+.mode-select {
+  width: 280px; /* Constrains the component selection system to standard size widths */
+}
+
+/* Format trigger button layout rules */
+.mode-select .select-trigger {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: #ffffff;
+  border: 1px solid #d1d1d6;
+  border-radius: 12px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.mode-select .trigger-label { flex-grow: 1; font-weight: 500; font-size: 14px; color: #1c1c1e; }
+.mode-select .trigger-icon { font-size: 24px; color: #007bff; }
+.mode-select .trigger-arrow { color: #8e8e93; }
+
+/* Transforms standard list layer template into an absolute popup overlay matrix */
+.mode-select .settings-list {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  width: 100%;
+  z-index: 2000;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  border-radius: 12px;
+  
+  /* Dropdown remains completely invisible until Javascript inserts standard open markers */
+  display: none; 
+}
+
+/* Trigger visibility class */
+.mode-select.open .settings-list {
+  display: block;
+}
+
+/* Compresses option column lines */
+.mode-select .list-item { padding: 12px 16px; }
+.mode-select .item-left-block { gap: 12px; }
+.mode-select .text-title { font-size: 14px; }
+.mode-select .item-icon { font-size: 20px; }
+
+.mode-select .text-subtitle {
+  display: none; /* Safely hides technical descriptions in compact popup selections */
+}
+
+/* Transforms right chevron indicators into hidden green validation checks */
+.mode-select .action-indicator {
+  display: none; 
+  color: #34c759;
+  font-size: 20px;
+}
+
+/* Custom text update state mapping: alters text inside checkmarks only for chosen items */
+.mode-select .list-item.active-option .action-indicator {
+  display: inline-block;
+}

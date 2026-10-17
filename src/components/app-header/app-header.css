@@ -1,0 +1,30 @@
+/* --- Sticky Mobile Header Layout --- */
+.app-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 64px;
+    /* Total height container matching modern app specs */
+    background-color: #fff;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+    z-index: 1000;
+}
+
+.header-logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    border-bottom: 1px solid #efefef;
+    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.08);
+
+    img {
+        height: 110px;
+    }
+}

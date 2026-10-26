@@ -40,14 +40,17 @@ export class MeterReadingComponent extends BaseComponent {
     submitBtn.addEventListener("click", this.submitMeterReading.bind(this));
   }
   validateAll() {
+    const formValue = {};
     formInput.forEach((item) => {
       const formEle = this.shadow.querySelector(`#${item.id}`);
       formEle.validate();
+      formValue[item.id] = formEle.inputElement.value;
     });
+    return formValue;
   }
   submitMeterReading(e) {
-    this.validateAll()
-    console.log('here in submit button clicked...');
+    const formValue = this.validateAll();
+    console.log('here in submit button clicked...', formValue);
     this.getLastMeterReading();
   }
 

@@ -2,6 +2,11 @@ export class DOMUtils {
     static innerHTML(element, html) {
         element.innerHTML = html;
     }
+    
+    static addClass(element, className) {
+        element.classList.add(className);
+    }
+
     static toggleClass(element, className) {
         element.classList.toggle(className);
     }

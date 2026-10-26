@@ -11,8 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
 
     <!-- Google Material Icons Import -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
     <link rel="stylesheet" href="/src/style.css">
 </head>
@@ -21,8 +20,24 @@
     <main>
         <app-component></app-component>
     </main>
+    <section id="iframe-wrapper"></section>
+    <script type="importmap">
+        {
+            "imports": {
+                "chart.js": "/node_modules/chart.js/dist/chart.js",
+                "chart.js/helpers": "/node_modules/chart.js/helpers/helpers.js",
+                "@kurkle/color": "/node_modules/@kurkle/color/dist/color.esm.js",
+                "chartjs-plugin-datalabels": "/node_modules/chartjs-plugin-datalabels/dist/chartjs-plugin-datalabels.esm.js",
+                "material-icons-css": "/node_modules/material-icons/iconfont/material-icons.css"
+            }
+        }
 
+    </script>
+
+
+    <script type="module" src="/src/components/global-dialog/global-dialog.js"></script>
     <script type="module" src="/src/app-router/app-router.js"></script>
+    <script type="module" src="/src/components/pie-chart/pie-chart.js"></script>
     <script type="module" src="/src/components/side-bar/side-bar.js"></script>
     <script type="module" src="/src/components/app-footer/app-footer.js"></script>
     <script type="module" src="/src/components/app-header/app-header.js"></script>
@@ -30,11 +45,12 @@
     <script type="module" src="/src/components/device-list/device-list.js"></script>
     <script type="module" src="/src/components/select-list/select-list.js"></script>
     <script type="module" src="/src/components/tab-list/tab-list.js"></script>
-    <script type="module" src="/src/components/tab-list/tab-list.js"></script>
-    <script type="module" src="/src/components/global-popup/global-popup.js"></script>
+    <script type="module" src="/src/components/action-card/action-card.js"></script>
 
     <script type="module" src="/src/app.js"></script>
-    
+ 
+    <script type="module" src="/src/services/action-handlers.js"></script>
+
 </body>
 
 </html>

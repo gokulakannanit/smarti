@@ -1,0 +1,103 @@
+:host {
+    --popup-bg: #ffffff;
+    --backdrop-bg: rgba(0, 0, 0, 0.5);
+    --max-width-web: 500px;
+    --border-radius: 12px;
+}
+
+dialog {
+    border: none;
+    background: var(--popup-bg);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    padding: 20px;
+    width: 90%;
+    box-sizing: border-box;
+    outline: none;
+}
+
+dialog::backdrop {
+    background: var(--backdrop-bg);
+}
+
+/* --- Responsive View Switch --- */
+/* Web View Layout (Centered modal) */
+@media (min-width: 768px) {
+    dialog {
+        max-width: var(--max-width-web);
+        border-radius: var(--border-radius);
+        margin: auto;
+    }
+}
+
+/* Mobile View Layout (Bottom sheet drawer) */
+@media (max-width: 767px) {
+    dialog {
+        max-width: 100%;
+        margin: auto bottom 0 bottom;
+        /* Anchors it to the bottom */
+        border-radius: var(--border-radius) var(--border-radius) 0 0;
+    }
+}
+
+dialog {
+  animation: slide-out-bottom 0.2s ease-out;
+}
+
+dialog[open] {
+  animation: slide-in-bottom 0.2s ease-out;
+}
+
+.popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 999;
+}
+
+h3{
+    width: 100%;
+    margin: 0;
+    padding-bottom: 10px;
+    color: #0b4d7f;
+    border-bottom: 1px solid #efefef;
+}
+
+dialog.no-title .popup-header h3 {
+  display: none;
+}
+
+dialog.no-title #popup-content {
+  position: relative;
+  top: -15px;
+}
+
+@keyframes slide-in-bottom {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: 0;
+  }
+}
+
+@keyframes slide-out-bottom {
+  from {
+    transform: 0;
+  }
+  to {
+    transform: translateY(100%);
+  }
+}

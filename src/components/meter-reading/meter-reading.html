@@ -1,0 +1,32 @@
+<!-- Layout template container configuration for meter-reading component -->
+<link rel="stylesheet" href="src/components/meter-reading/meter-reading.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&" />
+
+<div class="meter-reading">
+  <header>
+      <h2>Setup First Reading Cycle</h2>
+      <div class="icon-flow-banner">
+        <span class="material-symbols-outlined">electric_meter</span>
+        <span class="material-symbols-outlined arrow">arrow_forward</span>
+        <span class="material-symbols-outlined">bar_chart</span>
+      </div>
+  </header>
+
+  <div class="intro-section">
+    <h3>Set Your Consumption Baseline.</h3>
+    <p>We need two points in time to calculate your true consumption. This sets up your first calculation period.</p>
+  </div>
+
+  <div class="form-control">
+    <form onsubmit="event.preventDefault();">
+      <app-input-component id="mobileNo" type="phone"></app-input-component>
+    <app-input-component id="consumerNo" type="eb_consumer_no"></app-input-component>
+    <!-- Action Buttons Row -->
+      <div class="action-row">
+        <button type="button" class="btn btn-secondary">Cancel</button>
+        <button type="submit" class="btn btn-primary">GET METER READING</button>   
+      </div>
+    </form>
+  </div>
+
+</div>

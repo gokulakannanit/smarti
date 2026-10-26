@@ -1,0 +1,107 @@
+/* Local scoped stylesheet rules mapping to meter-reading component layout */
+:host {
+    --bg-color: #f6f8fb;
+    --card-bg: #ffffff;
+    --primary-color: #3b74cb;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --border-color: #cbd5e1;
+    --accent-bg: #e0eafd;
+}
+
+.meter-reading {
+    display: block;
+    box-sizing: border-box;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+header h2 {
+    font-size: 1rem;
+    color: var(--text-main);
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+/* Graphic flow banner showing meter connecting to analysis */
+.icon-flow-banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    background-color: var(--accent-bg);
+    padding: 12px 24px;
+    border-radius: 12px;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.icon-flow-banner .material-symbols-outlined {
+    font-size: 28px;
+    color: var(--primary-color);
+}
+
+.icon-flow-banner .arrow {
+    color: var(--text-muted);
+    font-size: 20px;
+}
+
+.intro-section {
+    margin-bottom: 5px;
+}
+
+.intro-section h3 {
+    font-size: 1.1rem;
+    color: var(--text-main);
+    margin-bottom: 6px;
+}
+
+.intro-section p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+    margin: 0px;
+}
+
+.form-control {
+    max-width: 420px;
+    margin: 0 auto;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 8px;
+}
+
+/* Primary execution buttons container */
+.action-row {
+    display: flex;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.btn {
+    flex: 1;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-secondary {
+    background-color: #f1f5f9;
+    color: var(--text-muted);
+}

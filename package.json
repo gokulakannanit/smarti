@@ -1,16 +1,21 @@
 {
-  "name": "mobile-pwa",
-  "private": true,
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build"
-  },
-  "dependencies": {
-    "@tailwindcss/vite": "^4.3.3",
-    "vite": "^8.3.4"
-  },
-  "devDependencies": {
-    "lite-server": "^2.6.1"
-  }
+    "name": "mobile-pwa",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "create-comp": "node generate-component.js --comp",
+        "create-page": "node generate-component.js --page",
+        "dev": "vite",
+        "build": "vite build"
+    },
+    "dependencies": {
+        "@tailwindcss/vite": "^4.3.3",
+        "chart.js": "^4.6.1",
+        "chartjs-plugin-datalabels": "^2.2.0",
+        "material-icons": "^1.13.14",
+        "vite": "^8.3.4"
+    },
+    "devDependencies": {
+        "lite-server": "^2.6.1"
+    }
 }

@@ -1,0 +1,53 @@
+/* Core Styling Rules & Typography Base */
+
+.dashboard-page {
+    padding: 24px 16px;
+}
+
+.section-title {
+    color: #0b4d7f;
+    margin: 0;
+}
+
+.section-sub-title {
+    font-size: 1.1rem;
+    color: #1a2530;
+    margin: 0 0 16px 0;
+}
+
+/* Horizontal Cards Grid Setup */
+
+.cards-row {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    overflow-x: auto;
+    /* Handles overflowing cards scroll logic fluidly */
+}
+
+
+
+/* 1. Hide text and show a clean gray box while loading */
+action-card-component:not(:defined) {
+  display: block;
+  width: 100%;
+  max-width: 350px;
+  height: 150px;
+  background-color: #e2e8f0;
+  border-radius: 8px;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+/* Hide the raw inner HTML text so it doesn't look broken */
+action-card-component:not(:defined) * {
+  visibility: hidden;
+}
+
+/* 2. The pulse animation effect */
+@keyframes pulse {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+}
+
+

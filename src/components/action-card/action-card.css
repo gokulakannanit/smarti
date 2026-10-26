@@ -1,0 +1,151 @@
+/* Local scoped stylesheet rules mapping to action-card component layout */
+
+
+/* Structural Card Styling Configuration */
+
+.action-card {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 160px;
+    height: 200px;
+    box-sizing: border-box;
+    background-color: #f7fafc;
+    border: 1px solid #edf2f7;
+    border-radius: 16px;
+    padding: 14px 10px;
+    cursor: pointer;
+}
+
+
+/* Dynamic State Variants styling mappings */
+
+.action-card.active-state,
+.action-card.secondary-state {
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+}
+
+.action-card.locked-state {
+    background-color: #fcfdfe;
+    border: 1px solid #f1f5f9;
+    opacity: 0.7;
+    position: relative;
+}
+
+
+/* System Icon Element Containers */
+
+.card-icon-wrapper {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+
+/* Google Fonts Material Span sizing engine override */
+
+.card-icon-wrapper .material-symbols-outlined {
+    font-size: 24px;
+}
+
+
+/* Icon Palette Dynamic Theming Options */
+
+.blue-icon {
+    background-color: #ebf4ff;
+    color: #3182ce;
+}
+
+.cyan-icon {
+    background-color: #e6fffa;
+    color: #319795;
+}
+
+.gray-icon {
+    background-color: #edf2f7;
+    color: #718096;
+}
+
+
+/* Text Element Layout Components */
+
+.card-title {
+    font-size: 0.78rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #2d3748;
+    margin-bottom: 6px;
+    min-height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-desc {
+    font-size: 0.65rem;
+    color: #718096;
+    line-height: 1.3;
+    margin-bottom: 12px;
+    flex-grow: 1;
+    /* Aligns dynamic call-to-action button items evenly */
+}
+
+
+/* Component Level Action Buttons */
+
+.card-btn {
+    width: 100%;
+    padding: 6px 4px;
+    font-size: 0.68rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+}
+
+.active-state .card-btn {
+    background-color: #edf2f7;
+    color: #4a5568;
+
+    :hover {
+        background-color: #e2e8f0;
+    }
+}
+
+.secondary-state .card-btn {
+    background-color: transparent;
+    border: 1px solid #cbd5e0;
+    color: #4a5568;
+
+    :hover {
+        background-color: #f7fafc;
+        border-color: #a0aec0;
+    }
+}
+
+.locked-state .card-btn {
+    display: none;
+}
+
+/* Top Right Fixed Positioning Lock Component badge config */
+
+.lock-badge.material-symbols-outlined {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    color: #a0aec0;
+    font-size: 16px;
+    opacity: 0;
+}
+
+.locked-state .lock-badge {
+    opacity: 1;
+}

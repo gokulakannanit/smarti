@@ -1,0 +1,89 @@
+:host {
+    display: block;
+    margin-bottom: 5px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    width: 100%;
+}
+
+.paper-container {
+    position: relative;
+    background: transparent;
+    padding-top: 20px;
+    /* Space reserved for the animated top label */
+}
+
+input {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #cbd5e1;
+    padding: 8px 4px;
+    font-size: 1rem;
+    color: #1e293b;
+    background: transparent;
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease;
+}
+
+/* 
+          CORRECTED MATERIAL LABEL CSS
+          By default, the label sits above but is invisible (opacity 0, shifted down slightly)
+        */
+label {
+    position: absolute;
+    left: 4px;
+    top: 0px;
+    color: #3b82f6;
+    font-size: 0.75rem;
+    pointer-events: none;
+    font-weight: 500;
+
+    /* Hidden state when input is empty and resting */
+    opacity: 0;
+    transform: translateY(10px);
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease;
+}
+
+/* 
+          ANIMATE IN: Show label ONLY if input is focused OR has typed characters 
+        */
+input:focus~label,
+input:not(:placeholder-shown)~label {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Change label color to neutral grey when text exists but input loses active focus */
+input:not(:placeholder-shown):not(:focus)~label {
+    color: #64748b;
+}
+
+input:focus {
+    border-bottom: 2px solid #3b82f6;
+    margin-bottom: -1px;
+}
+
+input.invalid {
+    border-bottom: 2px solid #ef4444;
+    margin-bottom: -1px;
+}
+
+input.invalid~label {
+    color: #ef4444 !important;
+}
+
+.error-msg {
+    font-size: 0.75rem;
+    color: #ef4444;
+    margin-top: 6px;
+    padding-left: 4px;
+    min-height: 16px;
+    opacity: 0;
+    transform: translateY(-4px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.error-msg.visible {
+    opacity: 1;
+    transform: translateY(0);
+}

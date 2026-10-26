@@ -3,7 +3,9 @@ export class EventBus {
   static Events = {
     ROUTE_CHANGE: 'app-route-change',
     STATE_CHANGE: 'state-change',
-    SERVICE_CALLED: 'service-called'
+    SERVICE_CALLED: 'service-called',
+    OPEN_POPUP: 'open-global-popup',
+    SET_METER_READING: 'set_meter_reading',
   };
 
   constructor() {
@@ -35,6 +37,7 @@ export class EventBus {
    * @param {Object} detail - The data payload to pass down
    */
   emit(eventName, detail = {}) {
+    console.log(eventName, ' : ', detail);
     const customEvent = new CustomEvent(eventName, { 
       detail,
       bubbles: false,

@@ -1,0 +1,16 @@
+<!-- Layout template container configuration for action-card component -->
+<link rel="stylesheet" href="src/components/action-card/action-card.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&" />
+
+<!-- Card 1: Log Initial Meter Reading -->
+<div class="action-card  {{_class.model}}">
+    <span class="material-symbols-outlined lock-badge">lock</span>
+    <div class="card-icon-wrapper blue-icon">
+        <!-- Google Material Icon: Speedometer/Dial alternative -->
+        <span class="material-symbols-outlined">{{_data.icon}}</span>
+    </div>
+    <h3 class="card-title">${cardTitle}</h3>
+    <p class="card-desc">${cardDesc}</p>
+    <button class="card-btn">${buttonLabel}</button>
+</div>

@@ -1,0 +1,14 @@
+main {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 120px);
+    /* Exactly fill the screen height */
+    overflow-y: auto;
+    /* Dynamic: Hides scrollbar normally, adds it when content increases */
+    overflow-x: hidden;
+    /* Prevents unwanted side-to-side shifting */
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 100vw;
+}

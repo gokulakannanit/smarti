@@ -58,6 +58,7 @@ export class PageWindowManager {
   getElement(selector) {
     if (!this.openedWindow || this.openedWindow.closed) return null;
     try {
+      console.log(this.openedWindow.document);
       return this.openedWindow.document.querySelector(selector);
     } catch {
       // Safely returns null if a security rule blocks reading the elements

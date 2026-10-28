@@ -49,21 +49,32 @@ export class MeterReadingComponent extends BaseComponent {
     return formValue;
   }
   submitMeterReading(e) {
-    const formValue = this.validateAll();
-    console.log('here in submit button clicked...', formValue);
+    this.formValue = this.validateAll();
+    console.log("here in submit button clicked...", this.formValue);
     this.getLastMeterReading();
   }
 
+  feedInputFromExternal() {
+        console.log(this.pageWindow.document);   
+        const _getInput = this._pageWindowManager.getElement;
+        const { consumerNo: serviceno, mobileNo: mob } = this.formValue;
+        const formData = { serviceno, mob };
+        console.log("formData", formData);
+        Object.entries(formData).forEach(([key, value]) => {
+          console.log(_getInput(`#${key}`));
+          _getInput(`#${key}`).value = value;
+        });
+  }
+
   getLastMeterReading() {
-    const _pageWindowManager = new PageWindowManager();
+    this._pageWindowManager = new PageWindowManager();
     const { TNEB_CHECK_BILL_URL } = URL_CONFIG.EB_URL;
-    _pageWindowManager
+    this._pageWindowManager
       .loadUrl(TNEB_CHECK_BILL_URL)
       .then((currentDoc) => {
-        // 🟢 PROMISE RESOLVED: Executed when resolve() is called inside the class
-        console.log("Success! Iframe DOM context obtained.",currentDoc);
-        //const button = currentDoc.querySelector("#my-btn");
-        //button.click();
+        this.pageWindow = currentDoc;
+        console.log("Success! Iframe DOM context obtained.", currentDoc);
+        setTimeout(this.feedInputFromExternal.bind(this), 4000);
       })
       .catch((error) => {
         // 🔴 PROMISE REJECTED: Executed when reject() is called inside the class

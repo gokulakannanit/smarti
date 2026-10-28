@@ -6,7 +6,8 @@
         "create-comp": "node generate-component.js --comp",
         "create-page": "node generate-component.js --page",
         "dev": "vite",
-        "build": "vite build"
+        "build": "vite build",
+        "start": "lite-server"
     },
     "dependencies": {
         "@tailwindcss/vite": "^4.3.3",

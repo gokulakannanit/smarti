@@ -1,20 +1,20 @@
 {
-    "name": "mobile-pwa",
-    "private": true,
-    "type": "module",
-    "scripts": {
-        "create-comp": "node generate-component.js --comp",
-        "create-page": "node generate-component.js --page",
-        "build": "npm install",
-        "start": "lite-server"
-    },
-    "dependencies": {
-        "@tailwindcss/vite": "^4.3.3",
-        "chart.js": "^4.6.1",
-        "chartjs-plugin-datalabels": "^2.2.0",
-        "material-icons": "^1.13.14"
-    },
-    "devDependencies": {
-        "lite-server": "^2.6.1"
-    }
+  "name": "mobile-pwa",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "create-comp": "node generate-component.js --comp",
+    "create-page": "node generate-component.js --page",
+    "build": "echo 'No build step required'",
+    "start": "lite-server"
+  },
+  "dependencies": {
+    "chart.js": "^4.6.1",
+    "chartjs-plugin-datalabels": "^2.2.0",
+    "material-icons": "^1.13.14"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "lite-server": "^2.6.1"
+  }
 }

@@ -5,16 +5,14 @@
     "scripts": {
         "create-comp": "node generate-component.js --comp",
         "create-page": "node generate-component.js --page",
-        "dev": "vite",
-        "build": "vite build",
+        "build": "npm install",
         "start": "lite-server"
     },
     "dependencies": {
         "@tailwindcss/vite": "^4.3.3",
         "chart.js": "^4.6.1",
         "chartjs-plugin-datalabels": "^2.2.0",
-        "material-icons": "^1.13.14",
-        "vite": "^8.3.4"
+        "material-icons": "^1.13.14"
     },
     "devDependencies": {
         "lite-server": "^2.6.1"

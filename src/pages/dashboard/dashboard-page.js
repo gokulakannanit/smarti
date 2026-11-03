@@ -27,8 +27,7 @@ export class DashboardPage extends BaseComponent {
     ];
 
     // Find the element and feed the array straight into the custom setter property
-    const deviceMenu = this.shadow.getElementById("deviceMenu");
-    console.log("deviceMenu", deviceMenu);
+    const deviceMenu = DOMUtils.shadowQuery(this, "#deviceMenu");
     deviceMenu && (deviceMenu.listData = dashboardItems);
   }
   intializeData() {
@@ -59,9 +58,10 @@ export class DashboardPage extends BaseComponent {
     ];
   }
   loadActionCard() {
-    const dashboardActionCard = this.shadowRoot.querySelector(
+    const dashboardActionCard = DOMUtils.shadowQuery(this, 
       ".dashboard-page .cards-row",
     );
+
     this.model.forEach((action) => {
       const actionCard = document.createElement("action-card-component");
       actionCard.setAttribute("data", JSON.stringify(action.data));

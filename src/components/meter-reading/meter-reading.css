@@ -12,6 +12,7 @@
 .meter-reading {
     display: block;
     box-sizing: border-box;
+    background: #fff
 }
 
 header {
@@ -78,7 +79,9 @@ header h2 {
 .action-row {
     display: flex;
     gap: 12px;
-    margin-top: 12px;
+    margin-top: 30px;
+    width: calc(100vw - 100px);
+    max-width: 420px;
 }
 
 .btn {
@@ -96,6 +99,35 @@ header h2 {
     opacity: 0.9;
 }
 
+.separator-glow {
+    width: 100%;
+    height: 24px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.separator-glow::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    /* Thinner 1px line for a sharper, premium look */
+
+    /* A very soft, near-white grey (#e0e0e0) in the center that fades out completely */
+    background: linear-gradient(to right,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(224, 234, 253, 1) 50%,
+            rgba(255, 255, 255, 0) 100%);
+
+    /* Super soft, wide ambient glow using a near-white grey */
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.04);
+
+}
+
+
 .btn-primary {
     background-color: var(--primary-color);
     color: white;
@@ -104,4 +136,10 @@ header h2 {
 .btn-secondary {
     background-color: #f1f5f9;
     color: var(--text-muted);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

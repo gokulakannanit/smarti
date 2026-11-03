@@ -21,28 +21,84 @@ if (!nameArg) {
 }
 
 // Convert spinal-case (dashboard-view) to PascalCase (DashboardViewComponent/DashboardViewPage)
-const cleanName = nameArg.replace(/-(page|component)\$/i, '');
+const cleanName = nameArg.replace(/-(page|component)$/i, '');
 const formattedName = cleanName.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join('');
 const pascalClassName = type === 'page' ? `${formattedName}Page` : `${formattedName}Component`;
 
 // Map target routing folder configurations using modern ES Modules directory paths
 const baseFolder = type === 'page' ? 'src/pages' : 'src/components';
-const targetDir = path.join(
-    import.meta.dirname, baseFolder, cleanName);
+const targetDir = path.join(import.meta.dirname, baseFolder, cleanName);
 
 // 1. Create the structural directory path securely
 fs.mkdirSync(targetDir, { recursive: true });
 
+// Compute the clean web path for the CSS file link tag reference
+const webCssPath = `${baseFolder}/${cleanName}/${cleanName}.css`;
+
 // 2. Blueprint templates configured directly from reference architectures
 const templates = {
-        js: type === 'page' ?
-            `import { BaseComponent } from "../../baseComponent.js";\nimport { DOMUtils } from "../../dom-utils.js";\n\nexport class ${pascalClassName} extends BaseComponent {\n    constructor() {\n        super(import.meta.url);\n    }\n    // Use this instead of connectedCallback()\n    onInit() {\n    }\n}\n\n(!customElements.get('${cleanName}-page')) && DOMUtils.define(${pascalClassName});\n` : `import { BaseComponent } from "../../baseComponent.js";\nimport { DOMUtils } from "../../dom-utils.js";\n\nexport class ${pascalClassName} extends BaseComponent {\n    constructor() {\n        super(import.meta.url);\n    }\n    // Use this instead of connectedCallback()\n    onInit() {\n    }\n}\nDOMUtils.define(${pascalClassName});\n`,
+    js: type === 'page' ?
+`import { BaseComponent } from "../../baseComponent.js";
+import { DOMUtils } from "../../dom-utils.js";
 
-        html: type === 'page' ?
-            `<!-- Layout shell for ${cleanName} page context view -->\n<link rel="stylesheet" href="${path.join(baseFolder, `${cleanName}\${cleanName}.css`).replace(/\\/g, '/')}">\n<div class="${cleanName}-page">\n  <h2 class="section-title">${formattedName} Screen Layout</h2>\n</div>\n` : `<!-- Layout template container configuration for ${cleanName} component -->\n<link rel="stylesheet" href="${path.join(baseFolder, `${cleanName}\${cleanName}.css`).replace(/\\/g, '/')}">\n<div class="${cleanName}">\n  <p>${cleanName} content placeholder</p>\n</div>\n`,
+export class ${pascalClassName} extends BaseComponent {
+    constructor() {
+        super(import.meta.url);
+    }
+    // Use this instead of connectedCallback()
+    onInit() {
+    }
+}
+
+(!customElements.get('${cleanName}-page')) && DOMUtils.define(${pascalClassName});
+` : 
+`import { BaseComponent } from "../../baseComponent.js";
+import { DOMUtils } from "../../dom-utils.js";
+
+export class ${pascalClassName} extends BaseComponent {
+    constructor() {
+        super(import.meta.url);
+    }
+    // Use this instead of connectedCallback()
+    onInit() {
+    }
+}
+DOMUtils.define(${pascalClassName});
+`,
+
+    html: type === 'page' ?
+`<!-- Layout shell for ${cleanName} page context view -->
+<link rel="stylesheet" href="${webCssPath}">
+<div class="${cleanName}-page">
+  <h2 class="section-title">${formattedName} Screen Layout</h2>
+</div>
+` : 
+`<!-- Layout template container configuration for ${cleanName} component -->
+<link rel="stylesheet" href="${webCssPath}">
+<div class="${cleanName}">
+  <p>${cleanName} content placeholder</p>
+</div>
+`,
 
     css: type === 'page' ?
-        `/* Page structural viewport layout rules for ${cleanName}-page */\n.${cleanName}-page {\n    width: 100%;\n    box-sizing: border-box;\n}\n\n.section-title {\n    font-size: 1.1rem;\n    font-weight: 700;\n    color: #1a2530;\n}\n` : `/* Local scoped stylesheet rules mapping to ${cleanName} component layout */\n.${cleanName} {\n    display: block;\n    box-sizing: border-box;\n}\n`
+`/* Page structural viewport layout rules for ${cleanName}-page */
+.${cleanName}-page {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.section-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1a2530;
+}
+` : 
+`/* Local scoped stylesheet rules mapping to ${cleanName} component layout */
+.${cleanName} {
+    display: block;
+    box-sizing: border-box;
+}
+`
 };
 
 // 3. Output files into designated file nodes synchronously

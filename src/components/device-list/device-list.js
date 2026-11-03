@@ -13,7 +13,7 @@ class DeviceListComponent extends BaseComponent {
     }
     // Use this instead of connectedCallback()
     onInit() {
-        const dashboardGrid = this.shadowRoot.querySelector('.dashboard-grid');
+        const dashboardGrid = DOMUtils.shadowQuery(this, '.dashboard-grid');
         this.devices.forEach(device => {
             const deviceCard = document.createElement('device-card-component');
             deviceCard.setAttribute('data', JSON.stringify(device));

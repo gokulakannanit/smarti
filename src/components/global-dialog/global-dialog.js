@@ -8,12 +8,11 @@ class GlobalDialogComponent extends BaseComponent {
   }
   // Use this instead of connectedCallback()
   onInit() {
-    this.dialog = this.shadowRoot.getElementById("popup-dialog");
-    this.titleEl = this.shadowRoot.getElementById("popup-title");
-    this.contentEl = this.shadowRoot.getElementById("popup-content");
+    this.dialog = DOMUtils.shadowQuery(this, "#popup-dialog");
+    this.titleEl = DOMUtils.shadowQuery(this, "#popup-title");
+    this.contentEl = DOMUtils.shadowQuery(this, "#popup-content");
 
-    this.shadowRoot
-      .getElementById("close-btn")
+    DOMUtils.shadowQuery(this, "#close-btn")
       .addEventListener("click", () => this.close());
 
     this.dialog.addEventListener("click", (e) => (e.target === this.dialog) && this.close()); // Close on backdrop click

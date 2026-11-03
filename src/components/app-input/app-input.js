@@ -7,8 +7,8 @@ export class AppInputComponent extends BaseComponent {
   }
   // Use this instead of connectedCallback()
   onInit() {
-    this.inputElement = this.shadow.querySelector("input");
-    this.errorElement = this.shadow.querySelector(".error-msg");
+    this.inputElement = DOMUtils.shadowQuery(this, "input");
+    this.errorElement = DOMUtils.shadowQuery(this, ".error-msg");
 
     // Bind operational event interactions
     this.inputElement.addEventListener("input", () => this.validate());
@@ -18,7 +18,9 @@ export class AppInputComponent extends BaseComponent {
   getValidatorRule(type) {
     const inputValidators = {
       phone: { min: 10, max: 10, regex: /^(?:\+91[-\s]?)?[6789]\d{9}$/ },
-      eb_consumer_no: { min: 9, max: 17, regex: /^\\d{9,12}$/ },
+      eb_consumer_no: { min: 9, max: 17, regex: /^\d{9,12}$/ },
+      eb_mtr_initial: {min: 3, max: 13, regex: /^\d{3,7}$/},
+      eb_mtr_current: {min: 3, max: 13, regex: /^\d{3,7}$/},
       default: { min: 1 },
     };
     const rules = inputValidators[type] || inputValidators.default;
@@ -39,6 +41,7 @@ export class AppInputComponent extends BaseComponent {
 
     // Reset view matrix properties
     this.errorElement.textContent = "";
+    this.error = false;
 
     DOMUtils.removeClassList([
       { element: this.inputElement, className: "invalid" },
@@ -79,6 +82,7 @@ export class AppInputComponent extends BaseComponent {
   invalidate(msg) {
     DOMUtils.addClass(this.inputElement, "invalid");
     this.errorElement.textContent = msg;
+    this.error = true;
     DOMUtils.addClass(this.errorElement, "visible");
   }
 

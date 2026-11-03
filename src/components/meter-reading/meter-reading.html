@@ -19,9 +19,20 @@
 
   <div class="form-control">
     <form onsubmit="event.preventDefault();">
-      <app-input-component id="mobileNo" type="phone"></app-input-component>
-    <app-input-component id="consumerNo" type="eb_consumer_no"></app-input-component>
-    <!-- Action Buttons Row -->
+      <!-- <app-input-component id="mobileNo" type="phone"></app-input-component>
+      <app-input-component id="consumerNo" type="eb_consumer_no"></app-input-component>
+      <app-input-component id="initialMtrNo" type="eb_mtr_initial"></app-input-component>
+      <app-input-component id="currentMtrNo" type="eb_mtr_current"></app-input-component> -->
+      
+      <app-digit-input-component id="initialMtrNo"></app-digit-input-component>      
+      <app-date-component id="lastReadingDate"></app-date-component>
+
+      <div class="separator-glow"></div>
+      <app-digit-input-component id="currentMtrNo"></app-digit-input-component>
+      <app-date-component id="currentReadingDate"></app-date-component>
+
+      <app-badge-component id="badge" show-close=""></app-badge-component>
+      <!-- Action Buttons Row -->
       <div class="action-row">
         <button type="button" class="btn btn-secondary">Cancel</button>
         <button type="submit" class="btn btn-primary">GET METER READING</button>   

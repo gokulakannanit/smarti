@@ -1,0 +1,20 @@
+<!-- Layout template container configuration for app-digit-input component -->
+<link rel="stylesheet" href="src/components/app-digit-input/app-digit-input.css">
+
+<div class="form-group">
+    <!-- Label on top -->
+    <label class="input-label" for="digitContainer">${labelText}</label>
+    
+    <!-- Input Box Wrapper Container -->
+    <div class="digit-group-container" id="digitContainer">
+      <input type="text" class="digit-input" maxlength="1" inputmode="numeric">
+      <input type="text" class="digit-input" maxlength="1" inputmode="numeric">
+      <input type="text" class="digit-input" maxlength="1" inputmode="numeric">
+      <input type="text" class="digit-input" maxlength="1" inputmode="numeric">
+    </div>
+
+    <!-- Layout-preserving error engine at the bottom -->
+    <div class="error-wrapper" id="errorContainer">
+      <div class="error-message" id="errorText"></div>
+    </div>
+  </div>

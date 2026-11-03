@@ -71,7 +71,7 @@ class PieChartComponent extends BaseComponent {
     ];
     const chartData = [75, 22, 3];
     
-    const ctx = this.shadow.getElementById("consumptionChart").getContext("2d");
+    const ctx = DOMUtils.shadowQuery(this, "#consumptionChart").getContext("2d");
 
     const tooltipCallback = (context) => ` ${context.label}: ${context.raw}%`;
 

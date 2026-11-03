@@ -1,0 +1,123 @@
+/* Local scoped stylesheet rules mapping to app-date component layout */
+.app-date {
+    display: block;
+    box-sizing: border-box;
+    margin:10px 0;
+    max-width: 230px;
+}
+
+/* Flat Bottom-Line Material Input Frame wrapper */
+.material-flat-input {
+    position: relative;
+    display: flex;
+    align-items: center;
+    /* Standard Material design field height */
+    padding: 0 8px 8px 4px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    cursor: pointer;
+    user-select: none;
+    box-sizing: border-box;
+
+    /* The Flat Underline */
+    border-bottom: 1px solid #cbd5e1;
+    transition: background-color 0.15s, border-bottom-color 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hover State background tweak */
+.material-flat-input:hover {
+    background-color: #fff;
+}
+
+/* Active Focus Underline State */
+.material-flat-input:focus-within {
+    background-color: #fff;
+    border-bottom: 2px solid #3b82f6;
+    /* Primary Purple active bottom line */
+}
+
+/* Target Field Layout Core */
+.field-core {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: center;
+    height: 100%;
+    padding-top: 4px;
+}
+
+/* 1. Hide the label by default when placeholder is visible */
+.text-display:placeholder-shown~.material-label {
+    opacity: 0;
+    max-height: 0;
+    transform: translateY(12px);
+}
+
+/* 2. Show the label smoothly when a date is selected (placeholder goes away) */
+.text-display:not(:placeholder-shown)~.material-label {
+    opacity: 1;
+    max-height: 100%;
+    transform: translateY(0);
+}
+
+/* Base styling for the label to allow the smooth animation */
+.material-label {
+    font-size: 0.75rem;
+    color: #3b82f6;
+    font-weight: 500;
+    letter-spacing: 0.4px;
+    margin-bottom: 8px;
+    max-height: 0;
+    transition:
+        height 0.2s ease,
+        opacity 0.2s ease,
+        transform 0.2s ease,
+        color 0.15s ease;
+}
+
+/* Shift label color on interactive focus */
+.material-flat-input:focus-within .material-label {
+    color: #3b82f6;
+}
+
+/* Clean Styled Text Display Area */
+.text-display {
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 0.9rem;
+    color: #1D1B20;
+    padding: 0;
+    width: 100%;
+    cursor: pointer;
+    padding-right: 10px;
+}
+
+/* Modern Google Material Symbol Styling */
+.material-symbols-outlined.date-icon {
+    color: #3b82f6;
+    font-size: 20px;
+    margin-left: 12px;
+    flex-shrink: 0;
+    transition: color 0.15s ease;
+    position: absolute;
+    bottom: 6px;
+    right: 6px;
+}
+
+/* Active dynamic color token toggle for the icon */
+.material-flat-input:focus-within .material-symbols-outlined.date-icon {
+    color: #3b82f6;
+}
+
+/* Invisible Native overlay trigger panel */
+.hidden-native-picker {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 5;
+}

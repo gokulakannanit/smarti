@@ -76,9 +76,12 @@ class StateStore {
 
 // Initial App State
 const initialState = {
-  userProfile: { name: "John", email: "john@example.com" },
-  ebCardDetail: { consumerNumber: "98765", tariff: "Domestic" },
-  MeterReading: { currentReading: 1000 },
+  userProfile: { name: "", email: "", mobileNumber: "" },
+  ebCardDetail: { consumerNumber: "", tariff: "" },
+  MeterReading: {
+    lastReading: { value: "", date: "" },
+    presentReading: { value: "", date: "" },
+  },
 };
 
 // Create the unified store instance

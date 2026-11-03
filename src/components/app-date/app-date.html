@@ -1,0 +1,30 @@
+<!-- Layout template container configuration for app-date component -->
+<link rel="stylesheet" href="src/components/app-date/app-date.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&" />
+
+<div class="app-date">
+  <!-- Flat Bottom-Line Input Component Frame -->
+  <div class="material-flat-input" id="picker-wrapper">
+    
+    <div class="field-core" style="display: flex; flex-direction: column-reverse;">
+           
+      <!-- Display Value placeholder field -->
+      <input 
+        type="text" 
+        id="date-text-view" 
+        class="text-display" 
+        placeholder="${placeholder}" 
+        readonly
+      >
+
+      <!-- Top Label -->
+      <span class="material-label">${labelText}</span>
+    </div>
+    
+    <!-- Modern Google Material Symbol instead of SVG -->
+    <span class="material-symbols-outlined date-icon">calendar_today</span>
+    
+    <!-- Hidden HTML5 engine link element anchor -->
+    <input type="date" id="native-date-engine" class="hidden-native-picker">
+  </div>
+</div>

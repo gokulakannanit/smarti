@@ -12,10 +12,9 @@ class SideBarComponent extends BaseComponent {
     }
 
     meuToggleClickHandler() {
-        const _dom = this.shadow;
-        const menuToggle = _dom.querySelector('.menu-toggle');
-        const mobileSidebar = _dom.querySelector('.mobile-sidebar');
-        const overlay = _dom.querySelector('.sidebar-overlay');
+        const menuToggle = DOMUtils.shadowQuery(this, '.menu-toggle');
+        const mobileSidebar = DOMUtils.shadowQuery(this, '.mobile-sidebar');
+        const overlay = DOMUtils.shadowQuery(this, '.sidebar-overlay');
         DOMUtils.toggleClassList([
             { element: menuToggle, className: 'is-active' },
             { element: mobileSidebar, className: 'is-active' },
@@ -29,16 +28,15 @@ class SideBarComponent extends BaseComponent {
 
     setMenuToggleEvent() {
         // Now this will find your element perfectly!
-        const _dom = this.shadow;
-        const menuToggle = _dom.querySelector('.menu-toggle');
-        const mobileSidebar = _dom.querySelector('.mobile-sidebar');
-        const navLinks = _dom.querySelectorAll('.full-screen-nav a');
+        const menuToggle = DOMUtils.shadowQuery(this, '.menu-toggle');
+        const mobileSidebar = DOMUtils.shadowQuery(this, '.mobile-sidebar');
+        const navLinks = DOMUtils.shadowQuery(this, '.full-screen-nav a', true );
 
         menuToggle && menuToggle.addEventListener('click', this.meuToggleClickHandler.bind(this));
 
         navLinks && navLinks.forEach(link => {
             link.addEventListener('click', () => {
-                const overlay = _dom.querySelector('.sidebar-overlay');
+                const overlay = DOMUtils.shadowQuery(this, '.sidebar-overlay');
                 DOMUtils.removeClassList([
                     { element: menuToggle, className: 'is-active' },
                     { element: mobileSidebar, className: 'is-active' },

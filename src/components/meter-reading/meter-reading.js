@@ -4,6 +4,9 @@ import { DOMUtils } from "../../dom-utils.js";
 import { DynamicIframeManager } from "../../services/iframe-manager.js";
 import { PageWindowManager } from "../../services/page-window.js";
 import { AppInputComponent } from "../app-input/app-input.js";
+import { AppDateComponent } from "../app-date/app-date.js";
+import { AppDigitInputComponent } from "../app-digit-input/app-digit-input.js";
+import { ObjectUtils } from "../../utils/object-util.js";
 
 const formInput = [
   {
@@ -22,48 +25,98 @@ const formInput = [
     },
     value: { value: "" },
   },
+  {
+    id: "initialMtrNo",
+    label: {
+      placeholder: "Enter Last Meter Reading...",
+      labelText: "Meter Reading Last",
+    },
+    value: { value: "", maxBoxes: 7, initialCount: 4 },
+  },
+  {
+    id: "currentMtrNo",
+    label: {
+      placeholder: "Enter Now Meter Reading...",
+      labelText: "Meter Reading Now",
+    },
+    value: { value: "" },
+  },
+  {
+    id: "lastReadingDate",
+    label: {
+      placeholder: "Enter Last Meter Date...",
+      labelText: "Previous Meter Date",
+    },
+    value: { value: "" },
+  },
+  {
+    id: "currentReadingDate",
+    label: {
+      placeholder: "Enter Now Meter Date...",
+      labelText: "Now Meter Date",
+    },
+    value: { value: "" },
+  },
 ];
 
 export class MeterReadingComponent extends BaseComponent {
   constructor() {
     super(import.meta.url);
   }
-  fillInputDate({ id, label, value }) {
-    const formEle = this.shadow.querySelector(`#${id}`);
-    formEle.setAttribute("_label", JSON.stringify(label));
-    formEle.setAttribute("data", JSON.stringify(value));
+  
+  setinitialMtrNo(targetEle, value) {
+    const pairedEle = DOMUtils.shadowQuery(this, '#currentMtrNo');
+    pairedEle.minValue = value;
+    pairedEle.validate();
+  }
+  setcurrentMtrNo(targetEle, value) {
+    const pairedEle = DOMUtils.shadowQuery(this, '#initialMtrNo');
+    if(pairedEle.value === '') return '';
+    const unitsConsumed = value - pairedEle.value;
+    this.badge.message(`Consumed ${unitsConsumed} units for last 30 days`);
+  }
+
+  fillInputData({ id, label, value }) {
+    const formEle = DOMUtils.shadowQuery(this, `#${id}`);
+    if (formEle) {
+      formEle.setAttribute("_label", JSON.stringify(label));
+      formEle.setAttribute("data", JSON.stringify(value));
+      formEle.onComplete = (targetEle, value) => {
+        const callback = this[`set${targetEle.id}`].bind(this);
+        callback && callback(targetEle, value);
+      };
+    }
   }
   // Use this instead of connectedCallback()
   onInit() {
-    formInput.forEach((item) => this.fillInputDate(item));
-    const submitBtn = this.shadow.querySelector('button[type="submit"]');
+    this.badge = DOMUtils.shadowQuery(this, '#badge');
+    formInput.forEach((item) => this.fillInputData(item));
+    const submitBtn = DOMUtils.shadowQuery(this, 'button[type="submit"]');
     submitBtn.addEventListener("click", this.submitMeterReading.bind(this));
   }
   validateAll() {
-    const formValue = {};
+    let isError = false;
+    this.formValue = {};
     formInput.forEach((item) => {
-      const formEle = this.shadow.querySelector(`#${item.id}`);
+      const formEle = DOMUtils.shadowQuery(this, `#${item.id}`);      
+      if(!formEle) return '';
       formEle.validate();
-      formValue[item.id] = formEle.inputElement.value;
+      isError = formEle.error ? true : isError;
+      this.formValue[item.id] = formEle.value || formEle.inputElement?.value;
     });
-    return formValue;
   }
   submitMeterReading(e) {
-    this.formValue = this.validateAll();
-    console.log("here in submit button clicked...", this.formValue);
+    this.validateAll();
     this.getLastMeterReading();
   }
 
   feedInputFromExternal() {
-        console.log(this.pageWindow.document);   
-        const _getInput = this._pageWindowManager.getElement;
-        const { consumerNo: serviceno, mobileNo: mob } = this.formValue;
-        const formData = { serviceno, mob };
-        console.log("formData", formData);
-        Object.entries(formData).forEach(([key, value]) => {
-          console.log(_getInput(`#${key}`));
-          _getInput(`#${key}`).value = value;
-        });
+    const _getInput = this._pageWindowManager.getElement;
+    const { consumerNo: serviceno, mobileNo: mob } = this.formValue.value;
+    const formData = { serviceno, mob };
+    Object.entries(formData).forEach(([key, value]) => {
+      _getInput(`#${key}`).value = value;
+    });
   }
 
   getLastMeterReading() {
@@ -73,8 +126,7 @@ export class MeterReadingComponent extends BaseComponent {
       .loadUrl(TNEB_CHECK_BILL_URL)
       .then((currentDoc) => {
         this.pageWindow = currentDoc;
-        console.log("Success! Iframe DOM context obtained.", currentDoc);
-        setTimeout(this.feedInputFromExternal.bind(this), 4000);
+        this.feedInputFromExternal();
       })
       .catch((error) => {
         // 🔴 PROMISE REJECTED: Executed when reject() is called inside the class

@@ -1,0 +1,105 @@
+/* Local scoped stylesheet rules mapping to app-badge component layout */
+
+
+:host {
+    display: block;
+    font-family: system-ui, -apple-system, sans-serif;
+    margin: 10px 0;
+    overflow: hidden;
+}
+
+.app-badge {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    border-radius: 6px;
+    border-left: 5px solid transparent;
+    font-size: 14px;
+    line-height: 1.5;
+    animation: slideIn 0.3s ease-out forwards;
+    min-width: 200px;
+    min-height: 30px;
+}
+.info {
+    background-color: #f0f9ff;
+    color: #0369a1;
+    border-left-color: #0ea5e9;
+}
+
+/* --- Types / Severities --- */
+.success {
+    background-color: #ecfdf5;
+    color: #065f46;
+    border-left-color: #10b981;
+}
+
+.warning {
+    background-color: #fffbeb;
+    color: #92400e;
+    border-left-color: #f59e0b;
+}
+
+.error {
+    background-color: #fef2f2;
+    color: #991b1b;
+    border-left-color: #ef4444;
+}
+
+.message-content {
+    flex-grow: 1;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+    color: currentColor;
+    opacity: 0.6;
+    margin-left: 12px;
+    padding: 0 4px;
+}
+
+.close-btn:hover {
+    opacity: 1;
+}
+
+/* --- Animations --- */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes shrinkOut {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+        max-height: 100px;
+        padding: 12px 16px;
+        margin-bottom: 10px;
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(0.95);
+        max-height: 0;
+        min-height: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+}
+
+.removing {
+    animation: shrinkOut 0.3s ease-in forwards !important;
+}

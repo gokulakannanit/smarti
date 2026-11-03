@@ -29,8 +29,7 @@ class TabListComponent extends BaseComponent {
     }
 
     initiateListener() {
-        const tabItems = this.shadow.querySelectorAll('.menu-link');
-        console.log('tabItems', tabItems);
+        const tabItems = DOMUtils.shadowQuery(this, '.menu-link', true);
         tabItems.forEach(link => this.addClickListener(link, tabItems));   
     }
 

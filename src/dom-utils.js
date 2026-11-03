@@ -7,6 +7,10 @@ export class DOMUtils {
         element.classList.add(className);
     }
 
+    static hasClass(ele, className) {
+        return ele.classList.contains(className);
+    }
+
     static toggleClass(element, className) {
         element.classList.toggle(className);
     }
@@ -22,6 +26,14 @@ export class DOMUtils {
         targetList.forEach(({ element, className }) => {
             this.removeClass(element, className);
         });
+    }
+    static addClassList(targetList) {
+        targetList.forEach(({ element, className }) => {
+            this.addClass(element, className);
+        });
+    }
+    static shadowQuery(ele, query, all = false){
+        return all? ele.shadow.querySelectorAll(query) : ele.shadow.querySelector(query);
     }
     static define(componentClass) {
         const tagName = DOMUtils.toTagName(componentClass.name);
